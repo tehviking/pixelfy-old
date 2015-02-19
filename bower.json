@@ -1,0 +1,17 @@
+{
+  "name": "ember-app-kit",
+  "dependencies": {
+    "jquery": "~1.9.1",
+    "ember-qunit": "0.2.8",
+    "ember-qunit-notifications": "0.0.7",
+    "qunit": "~1.17.1",
+    "handlebars": "2.0.0",
+    "ember": "1.10.0",
+    "ember-data": "1.0.0-beta.14.1",
+    "ember-resolver": "~0.1.11",
+    "ic-ajax": "~1.0.4",
+    "ember-testing-httpRespond": "~0.1.1",
+    "loader.js": "git://github.com/stefanpenner/loader.js",
+    "ember-load-initializers": "git://github.com/stefanpenner/ember-load-initializers.git#0.0.1"
+  }
+}
