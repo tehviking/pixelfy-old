@@ -4,6 +4,7 @@
     "jquery": "~1.9.1",
     "ember-qunit": "0.2.8",
     "ember-qunit-notifications": "0.0.7",
+    "bootstrap-sass": "3.3.3",
     "qunit": "~1.17.1",
     "handlebars": "2.0.0",
     "ember": "1.10.0",

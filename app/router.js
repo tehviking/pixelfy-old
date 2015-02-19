@@ -1,10 +1,14 @@
-App.Router.map(function() {
-  this.route('component-test');
-  this.route('helper-test');
-  // this.resource('posts', function() {
-  //   this.route('new');
-  // });
+App.Router = Ember.Router.extend({
+  location: "auto"
 });
+
+App.Router.map(function() {
+  this.resource('images', {path: "/"}, function() {
+    this.route('show', {path: "/:id"});
+  });
+  this.route('gravatar');
+});
+
 
 App.ApplicationRoute = Ember.Route.extend({
   model: function() {
