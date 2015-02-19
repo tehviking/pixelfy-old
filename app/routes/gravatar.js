@@ -1,14 +1,4 @@
-App.ImagesRoute = Ember.Route.extend({
-  model: function() {
-    return App.imageData();
-  }
-});
-
-App.ImagesShowRoute = Ember.Route.extend({
-  model: function(params) {
-    return this.modelFor("images").findBy("id", params.id);
-  },
-
+App.GravatarRoute = Ember.Route.extend({
   actions: {
     downloadImage: function() {
       var link = document.createElement("a");
