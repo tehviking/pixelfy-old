@@ -27,8 +27,7 @@ window.startApp = function(attrs) {
     // useful Test defaults
     rootElement: '#ember-testing-container',
     LOG_ACTIVE_GENERATION:false,
-    LOG_VIEW_LOOKUPS: false,
-    Resolver: testResolver()
+    LOG_VIEW_LOOKUPS: false
   }, attrs); // but you can override;
 
   Ember.Router.reopen({

@@ -9,11 +9,9 @@ module('Acceptances - Index', {
   }
 });
 
-test('index renders', function(){
+test('index renders a list of images', function(){
 
   visit('/').then(function(){
-    var title = find('h2#title');
-    var list = find('ul li');
-    equal(title.text(), 'Welcome to Ember.js');
+    equal($(".spec-gallery-image").length, 100);
   });
 });

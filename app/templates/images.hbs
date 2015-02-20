@@ -6,7 +6,7 @@
       {{#each image in model}}
         <li>
           {{#link-to "images.show" image}}
-            <img class="gallery-image" {{bind-attr src="image.url"}}>
+            <img class="gallery-image spec-gallery-image" {{bind-attr src="image.url"}}>
           {{/link-to}}
         </li>
       {{/each}}
