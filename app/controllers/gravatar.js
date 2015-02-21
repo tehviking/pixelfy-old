@@ -1,8 +1,7 @@
 App.GravatarController = Ember.Controller.extend({
   gravatarEmail: "",
   gravatarUrl: Ember.computed("gravatarEmail", function() {
-    var hash = md5(this.get("gravatarEmail").trim().toLowerCase());
-    return "http://gravatar.com/avatar/"+ hash + "?s=400";
+    return App.gravatarUrlFromEmail(this.get("gravatarEmail"), 400);
   }),
 
   createBlobUrl: function() {
@@ -38,3 +37,9 @@ App.GravatarController = Ember.Controller.extend({
   }
 
 });
+
+App.gravatarUrlFromEmail = function(email, size) {
+  trimmedEmail = email.trim().toLowerCase();
+  md5hash = md5(trimmedEmail);
+  return "http://gravatar.com/avatar/" + md5hash + "?s=" + size.toString();
+};
