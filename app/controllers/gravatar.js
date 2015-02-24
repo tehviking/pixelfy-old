@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import gravatarUrlFromEmail from '../utils/gravatar-url-from-email';
 
 var GravatarController = Ember.Controller.extend({
   gravatarEmail: "",
