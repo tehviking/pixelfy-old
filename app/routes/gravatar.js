@@ -1,4 +1,6 @@
-App.GravatarRoute = Ember.Route.extend({
+import Ember from 'ember';
+
+var GravatarRoute = Ember.Route.extend({
   actions: {
     downloadImage: function() {
       var link = document.createElement("a");
@@ -9,3 +11,5 @@ App.GravatarRoute = Ember.Route.extend({
     }
   }
 });
+
+export default GravatarRoute;

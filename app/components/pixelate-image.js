@@ -1,4 +1,6 @@
-App.PixelateImageComponent = Ember.Component.extend({
+import Ember from 'ember';
+
+var PixelateImageComponent = Ember.Component.extend({
   value: 0,
 
   performPixelation: Ember.observer("value", function() {
@@ -18,3 +20,5 @@ App.PixelateImageComponent = Ember.Component.extend({
     }, 100);
   })
 });
+
+export default PixelateImageComponent;

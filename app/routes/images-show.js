@@ -1,10 +1,6 @@
-App.ImagesRoute = Ember.Route.extend({
-  model: function() {
-    return App.imageData();
-  }
-});
+import Ember from 'ember';
 
-App.ImagesShowRoute = Ember.Route.extend({
+var ImagesShowRoute = Ember.Route.extend({
   model: function(params) {
     return this.modelFor("images").findBy("id", params.id);
   },
@@ -19,3 +15,5 @@ App.ImagesShowRoute = Ember.Route.extend({
     }
   }
 });
+
+export default ImagesShowRoute;

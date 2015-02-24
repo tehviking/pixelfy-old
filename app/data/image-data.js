@@ -1,4 +1,6 @@
-App.imageData = function (id) {
+import Image from '/app/models/image';
+
+var imageData = function (id) {
   var images = {
     "1": {
       id: "1",
@@ -34,11 +36,13 @@ App.imageData = function (id) {
     }
   };
   if(arguments.length) {
-    return App.Image.create(images[id]);
+    return Image.create(images[id]);
   } else {
     var imagesArray = Object.keys(images).map(function(k){
-      return App.Image.create(images[k]);
+      return Image.create(images[k]);
     });
     return imagesArray;
   }
-}
+};
+
+export default imageData;

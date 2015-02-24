@@ -1,3 +1,7 @@
-App.Image = Ember.Object.extend({
+import Ember from 'ember';
+
+var Image = Ember.Object.extend({
   url: ""
 });
+
+export default Image;

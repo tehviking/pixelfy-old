@@ -1,89 +1,6 @@
-//import PropertyBindings from 'ember-binding-macros/mixins/property-bindings';
+import Ember from 'ember';
 
-/**
- * A component to represent a number that must fall between two
- * (inclusive) bounds and can be updated by a discrete step size.
- * See: http://www.w3.org/wiki/HTML/Elements/input/range
-
- * For example:
- *
- *
- *   {{x-slider min=0 max=100 step=1 value=someNumber}}
- *
- * @class XSliderComponent
- */
-
-//import Ember from 'ember';
-
-function parseSpecifier(spec) {
-  if (!spec) {
-    return null;
-  }
-  var match;
-  var normal = spec.replace(/\s+/g, '');
-  if ((match = normal.match(/^(.+)<>(.+)$/))) {
-    return {
-      oneWay: false,
-      from: match[1],
-      to: match[2]
-    };
-  } else if ((match = normal.match(/^(.+)>(.+)$/))) {
-    return {
-      oneWay: true,
-      from: match[1],
-      to: match[2]
-    };
-  } else if ((match = normal.match(/^(.+)<(.+)$/))) {
-    return {
-      oneWay: true,
-      from: match[2],
-      to: match[1]
-    };
-  } else {
-    throw new Error("invalid property binding specifier '"+ spec + "'");
-  }
-}
-
-function bindingsFor(obj) {
-  var meta = Ember.meta(obj);
-  if (!meta.propertyBindings) {
-    meta.propertyBindings = [];
-  }
-  return meta.propertyBindings;
-}
-
-PropertyBindings = Ember.Mixin.create({
-  __initializePropertyBindings__: Ember.observer(function() {
-    var bindings = bindingsFor(this);
-    var specifiers = this.get('propertyBindings') || [];
-
-    specifiers.forEach(function(specifier) {
-      var spec = parseSpecifier(specifier);
-      if (spec) {
-        var binding = Ember.Binding.from(spec.from).to(spec.to);
-        if (spec.oneWay) {
-          binding.oneWay();
-        }
-        binding.connect(this);
-        bindings.push(binding);
-      }
-    }, this);
-  }).on('init'),
-
-  willDestroy: function() {
-    var bindings = bindingsFor(this);
-    bindings.forEach(function(binding) {
-      binding.disconnect(this);
-    }, this);
-    this._super.apply(this, arguments);
-  }
-});
-
-Ember.Object.prototype.concatenatedProperties.push('propertyBindings');
-Ember.Object.reopen(PropertyBindings);
-
-
-App.XSliderComponent = Ember.Component.extend(PropertyBindings, {
+var XSliderComponent = Ember.Component.extend(PropertyBindings, {
   type: "range",
   tagName: ['input'],
   classNames: ['x-slider'],
@@ -141,3 +58,85 @@ App.XSliderComponent = Ember.Component.extend(PropertyBindings, {
     this.set('value', Number(this.get('element.value')).valueOf());
   }
 });
+//import PropertyBindings from 'ember-binding-macros/mixins/property-bindings';
+
+/**
+ * A component to represent a number that must fall between two
+ * (inclusive) bounds and can be updated by a discrete step size.
+ * See: http://www.w3.org/wiki/HTML/Elements/input/range
+
+ * For example:
+ *
+ *
+ *   {{x-slider min=0 max=100 step=1 value=someNumber}}
+ *
+ * @class XSliderComponent
+ */
+
+//import Ember from 'ember';
+
+function parseSpecifier(spec) {
+  if (!spec) {
+    return null;
+  }
+  var match;
+  var normal = spec.replace(/\s+/g, '');
+  if ((match = normal.match(/^(.+)<>(.+)$/))) {
+    return {
+      oneWay: false,
+      from: match[1],
+      to: match[2]
+    };
+  } else if ((match = normal.match(/^(.+)>(.+)$/))) {
+    return {
+      oneWay: true,
+      from: match[1],
+      to: match[2]
+    };
+  } else if ((match = normal.match(/^(.+)<(.+)$/))) {
+    return {
+      oneWay: true,
+      from: match[2],
+      to: match[1]
+    };
+  } else {
+    throw new Error("invalid property binding specifier '"+ spec + "'");
+  }
+}
+function bindingsFor(obj) {
+  var meta = Ember.meta(obj);
+  if (!meta.propertyBindings) {
+    meta.propertyBindings = [];
+  }
+  return meta.propertyBindings;
+}
+PropertyBindings = Ember.Mixin.create({
+  __initializePropertyBindings__: Ember.observer(function() {
+    var bindings = bindingsFor(this);
+    var specifiers = this.get('propertyBindings') || [];
+
+    specifiers.forEach(function(specifier) {
+      var spec = parseSpecifier(specifier);
+      if (spec) {
+        var binding = Ember.Binding.from(spec.from).to(spec.to);
+        if (spec.oneWay) {
+          binding.oneWay();
+        }
+        binding.connect(this);
+        bindings.push(binding);
+      }
+    }, this);
+  }).on('init'),
+
+  willDestroy: function() {
+    var bindings = bindingsFor(this);
+    bindings.forEach(function(binding) {
+      binding.disconnect(this);
+    }, this);
+    this._super.apply(this, arguments);
+  }
+});
+Ember.Object.prototype.concatenatedProperties.push('propertyBindings');
+Ember.Object.reopen(PropertyBindings);
+
+export default XSliderComponent;
