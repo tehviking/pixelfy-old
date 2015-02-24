@@ -1,17 +1,23 @@
-var App;
+import Ember from 'ember';
+import { module, test } from 'qunit';
+import startApp from '../helpers/start-app';
 
-module('Acceptances - Index', {
-  setup: function(){
-    App = startApp();
+var application;
+
+module('Acceptance: Index', {
+  beforeEach: function() {
+    application = startApp();
   },
-  teardown: function() {
-    Ember.run(App, 'destroy');
+
+  afterEach: function() {
+    Ember.run(application, 'destroy');
   }
 });
 
-test('index renders a list of images', function(){
+test('visiting /index', function(assert) {
+  visit('/index');
 
-  visit('/').then(function(){
-    equal($(".spec-gallery-image").length, 100);
+  andThen(function() {
+    assert.equal(Ember.$(".spec-gallery-image").length, 8);
   });
 });
