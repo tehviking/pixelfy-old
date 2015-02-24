@@ -1,4 +1,4 @@
-import Image from '/app/models/image';
+import Image from '../models/image';
 
 var imageData = function (id) {
   var images = {
